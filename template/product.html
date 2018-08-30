@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <button class="btn btn-default btn-block" ng-click="getProductByCategory('全部')" ng-class="getClassByCategory('全部')">全部</button>
+            <button class="btn btn-default btn-block" ng-repeat="x in products | unique" ng-bind="x" ng-click="getProductByCategory(x)" ng-class="getClassByCategory(x)"></button>
+
+    </div>
+
+        <div class="col-md-9">
+            <!--一个商品-->
+            <div ng-repeat="x in pagePros">
+                <h3>
+                    {{x.name}}
+                    <span class="pull-right label label-primary">{{x.price | currency:"¥"}}</span>
+                </h3>
+                <button class="btn btn-success pull-right"ng-click="addCar(x)">加入购物车</button>
+                <div class="clearfix"></div>
+                <p class="lead">{{x.des}}</p>
+            </div>
+            <!--分页-->
+                <!--ng-click不能直接调用系统的函数-->
+            <div class="pull-right">
+                <button class="btn btn-default" ng-repeat="x in page" ng-bind="x" ng-click="getProsByPage(x)" ng-class="getClassByPage(x)"></button>
+
+            </div>
+    </div>
+   </div>
+
+</div>
